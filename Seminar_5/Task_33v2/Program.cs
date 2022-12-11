@@ -31,11 +31,8 @@ void FindNum(int[] array, int num)
 
 Console.WriteLine("Введите размерность массива");
 int size = Convert.ToInt32(Console.ReadLine());
-
 Console.WriteLine("Введите искомое число: ");
 int num = Convert.ToInt32(Console.ReadLine());
-
 int[] array = CreateArray(size);
 PrintArray(array);
-if (FindNum(array, num)) Console.WriteLine("ДА, Число присутствует в массиве!");
-else Console.WriteLine("НЕТ! Искомого числа");
+FindNum(array, num);
