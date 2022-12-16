@@ -4,10 +4,43 @@
 // углов треугольника в градусах, является ли он прямоугольным, равнобедренным, 
 // равносторонним.
 
-void TriangleCheck(int A, int B, int C)
+void TriangleCheck(double A, double B, double C)
 {
     if (A < B + C & B < C + A & C < A + B)
+    {
         Console.WriteLine("Треугольник с такими сторонами существует ");
+
+        double perimeterTriangle = A + B + C;
+        Console.WriteLine("Периметр треугольника: " + perimeterTriangle);
+
+        double p = perimeterTriangle / 2;
+        double areaTriangle = Math.Round(Math.Sqrt(p * (p - A) * (p - B) * (p - C)), 3);
+        Console.WriteLine("Площадь треугольника: " + areaTriangle);
+
+        double angleA = Math.Round((Math.Acos(
+            (Math.Pow(A, 2) + Math.Pow(C, 2) - Math.Pow(B, 2)) / (2 * A * C)
+            ) * (180.0 / Math.PI)), 3);
+        double angleB = Math.Round((Math.Acos(
+            (Math.Pow(A, 2) + Math.Pow(B, 2) - Math.Pow(C, 2)) / (2 * A * B)
+            ) * (180.0 / Math.PI)), 3);
+        double angleC = Math.Round((Math.Acos(
+            (Math.Pow(B, 2) + Math.Pow(C, 2) - Math.Pow(A, 2)) / (2 * C * B)
+            ) * (180.0 / Math.PI)), 3);
+        Console.WriteLine($"Углы треугольника A:{angleA} B:{angleB} C:{angleC} ");
+        if (A == B & B == C & C == A)
+        {
+            Console.WriteLine("Треугольник равносторонний ");
+        }
+        else if (A == B || B == C || C == A)
+        {
+            Console.WriteLine("Треугольник равнобедренный ");
+        }
+        else if (angleA == 90 || angleB == 90 || angleC == 90)
+        {
+            Console.WriteLine("Треугольник прямоугольный ");
+        }
+
+    }
     else Console.WriteLine("Треугольник с такими сторонами не существует ");
 }
 
@@ -26,9 +59,3 @@ catch
 {
     Console.WriteLine("Ошибка ввода, введите целые числовые значения!");
 }
-
-
-Периметр A+B+C
-Высота p=(A+B+C)/2 h=2*(Math.Sqrt((p(p-A)(p-B)(p-C)),2))/на сторону треугольника (A,B,C)
-Площадь S=Math.Pow((p(p-A)(p-B)(p-C)),0.5), S=Math.Sqrt((p(p-A)(p-B)(p-C)),2), S=A*h/2
-cos
